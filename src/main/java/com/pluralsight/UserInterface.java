@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
+    public static final String DEFAULT = "\u001B[0m";
+    public static final String BLUE = "\u001B[34m";
 
     public UserInterface() {
     }
@@ -21,7 +23,12 @@ public class UserInterface {
         boolean run = true;
 
         while (run) {
-            System.out.println("Dealership: ");
+            System.out.println(BLUE +
+                            "▄     ▜       ▌ ▘  \n" +
+                            "▌▌█▌▀▌▐ █▌▛▘▛▘▛▌▌▛▌\n" +
+                            "▙▘▙▖█▌▐▖▙▖▌ ▄▌▌▌▌▙▌\n" +
+                            "                 ▌ " + DEFAULT
+            );
             System.out.println("1- Find vehicles within a price range");
             System.out.println("2- Find vehicles by make/model");
             System.out.println("3- Find vehicles by year range");
@@ -162,9 +169,14 @@ public class UserInterface {
     }
 
     private void displayVehicles(List<Vehicle> vehicle) {
+        System.out.println();
+        System.out.println(BLUE+"Year |  Make  |  Model  |  Color  |  Price  |  Miles");
+        System.out.println("======================================================"+DEFAULT);
         for (Vehicle vehicle1 : vehicle) {
-            System.out.println(vehicle1.getYear() + " " + vehicle1.getMake() + " " + vehicle1.getModel() + " " + vehicle1.getColor() + "  " + vehicle1.getPrice() + "  " + vehicle1.getOdometer());
+            System.out.println(vehicle1.getYear() + " | " + vehicle1.getMake() + " | " + vehicle1.getModel() + " | " + vehicle1.getColor() + " | $" + vehicle1.getPrice() + " | " + vehicle1.getOdometer() +
+                    " miles");
         }
+        System.out.println();
     }
 
 }
